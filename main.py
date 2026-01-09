@@ -1,10 +1,23 @@
 ages = []
 
 while True:
-    age = int(input("Введи вік (0 — стоп): "))
+    user_input = input("Введи вік (0 — стоп): ")
+
+    try:
+        age = int(user_input)
+    except ValueError:
+        print("Будь ласка, введи число")
+        continue
+
+    if age < 0:
+        print("Вік не може бути відʼємним")
+        continue
+
     if age == 0:
         break
+
     ages.append(age)
+
 
 if len(ages) == 0:
     print("Немає даних для аналізу")
@@ -21,12 +34,15 @@ else:
     min_age = min(ages)
     max_age = max(ages)
 
-    print("Мінімальний вік:", min_age)
-    print("Максимальний вік:", max_age)
-    print("Кількість повнолітніх:", count_adult)
-    print("Середній вік:", average_age)
+    print("\nРезультати аналізу:")
+print("Кількість людей:", total_people)
+print("Мінімальний вік:", min_age)
+print("Максимальний вік:", max_age)
+print("Середній вік:", average_age)
+print("Кількість повнолітніх:", count_adult)
 
-    if average_age >= 21:
-        print("Аудиторія доросла")
-    else:
-        print("Аудиторія молода")
+if average_age >= 21:
+    print("Аудиторія доросла")
+else:
+    print("Аудиторія молода")
+
